@@ -45,10 +45,19 @@ export default class TaskModel {
 		}
 	}
 
-	public static async update(id: ObjectId, body: ITask) {
+	public static async update(id: string, body: ITask) {
 		try {
+			await TaskModel.Task.findByIdAndUpdate(id, body);
 			const task = await TaskModel.Task.findById(id);
+			return task;
+		} catch(err) {
+			console.log(err);
+		}
+	}
 
+	public static async delete(id: string) {
+		try {
+			await TaskModel.Task.remove({ _id: id });
 		} catch(err) {
 			console.log(err);
 		}
