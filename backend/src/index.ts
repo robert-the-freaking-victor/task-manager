@@ -1,6 +1,10 @@
-import express from 'express';
-const app = express();
+import dotenv from "dotenv";
+// load the env
+dotenv.config();
+import app from './app';
+import RoutesAPI from './api/routes/index';
+import bodyParser from 'body-parser';
 
-app.listen(() => {
-	console.log("Server is running!");
-});
+app.use(bodyParser.json());
+
+RoutesAPI.runApi();
