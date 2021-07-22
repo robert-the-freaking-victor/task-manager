@@ -12,7 +12,7 @@ export default class TaskController {
 			return task;
 		} catch(err) {
 			console.log(err);
-			response.status(500).json({'error': err});
+			response.status(500).json({error: err});
 		} finally {
 			next();
 		}
@@ -27,7 +27,7 @@ export default class TaskController {
 			return task;
 		} catch(err) {
 			console.log(err);
-			response.status(500).json({'error': err });
+			response.status(500).json({error: err });
 		} finally {
 			next();
 		}
@@ -40,7 +40,7 @@ export default class TaskController {
 			return tasks;
 		} catch(err) {
 			console.log(err);
-			response.status(500).json({'error': err});
+			response.status(500).json({error: err});
 		} finally {
 			next();
 		}
@@ -48,10 +48,15 @@ export default class TaskController {
 
 	public static async update(request: Request, response: Response, next: NextFunction) {
 		try {
-
+			const body: ITask = request.body;
+			const params = request.params;
+			const id = params.id;
+			const updatedTask = await TaskModel.update(id, body);
+			response.status(200).json(updatedTask);
+			return updatedTask;
 		} catch(err) {
 			console.log(err);
-			response.status(500).json({'error': err});
+			response.status(500).json({error: err});
 		} finally {
 			next();
 		}
@@ -59,10 +64,13 @@ export default class TaskController {
 
 	public static async delete(request: Request, response: Response, next: NextFunction) {
 		try {
-			
+			const params = request.params;
+			const id = params.id;
+			TaskModel.delete(id);
+			response.status(200).json({ deleted: true });
 		} catch(err) {
 			console.log(err);
-			response.status(500).json({'error': err});
+			response.status(500).json({error: err});
 		} finally {
 			next();
 		}
