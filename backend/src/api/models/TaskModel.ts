@@ -1,5 +1,5 @@
 import { Schema, ObjectId } from 'mongoose';
-import mongoose from '../database/mongoDB';
+import mongoose from '../../database/mongoDB';
 
 
 const taskSchema = new Schema({

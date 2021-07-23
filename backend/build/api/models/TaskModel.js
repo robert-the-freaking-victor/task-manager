@@ -40,7 +40,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose_1 = require("mongoose");
-var mongoDB_1 = __importDefault(require("../database/mongoDB"));
+var mongoDB_1 = __importDefault(require("../../database/mongoDB"));
 var taskSchema = new mongoose_1.Schema({
     Title: String,
     Description: String,
