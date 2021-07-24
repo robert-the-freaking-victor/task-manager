@@ -116,7 +116,8 @@ var TaskModel = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 3, , 4]);
-                        return [4 /*yield*/, TaskModel.Task.findByIdAndUpdate(id, body)];
+                        console.log(id);
+                        return [4 /*yield*/, TaskModel.Task.updateOne({ _id: id }, body)];
                     case 1:
                         _a.sent();
                         return [4 /*yield*/, TaskModel.Task.findById(id)];

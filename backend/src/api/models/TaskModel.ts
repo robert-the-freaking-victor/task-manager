@@ -47,7 +47,7 @@ export default class TaskModel {
 
 	public static async update(id: string, body: ITask) {
 		try {
-			await TaskModel.Task.findByIdAndUpdate(id, body);
+			await TaskModel.Task.updateOne({ _id: id }, body);
 			const task = await TaskModel.Task.findById(id);
 			return task;
 		} catch(err) {
